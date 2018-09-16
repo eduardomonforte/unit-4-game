@@ -10,7 +10,11 @@ body {
 }
 
 .gem:hover {
-    cursor: url(../images/pickaxe.png), help;
+    cursor: url(../images/pickaxe.png), auto;
+}
+
+#wither:hover {
+    cursor: url(../images/sword.png), auto;
 }
 
 #diamond-ore {

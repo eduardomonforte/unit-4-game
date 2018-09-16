@@ -10,6 +10,8 @@ console.log("I'm linked!");
     var redstoneValue = 0;
     var wins = 0;
     var loses = 0;
+    var mineSound = document.createElement("audio");
+        mineSound.setAttribute("src", "assets/sounds/mine.ogg");
 
     $("#match-this").html(matchThis);
     $("#current-score").html(currentScore);
@@ -53,21 +55,25 @@ console.log("I'm linked!");
         $("#diamond-ore").on("click", function() {
             currentScore += diamondValue;
             $("#current-score").html(currentScore);
+            mineSound.play();
         });
 
         $("#emerald-ore").on("click", function() {
             currentScore += emeraldValue;
             $("#current-score").html(currentScore); 
+            mineSound.play();
         });
 
         $("#gold-ore").on("click", function() {
             currentScore += goldValue;
             $("#current-score").html(currentScore);
+            mineSound.play();
         });
 
         $("#redstone-ore").on("click", function() {
             currentScore += redstoneValue;
             $("#current-score").html(currentScore);
+            mineSound.play();
         });
 
     }
