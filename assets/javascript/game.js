@@ -14,6 +14,7 @@ console.log("I'm linked!");
         mineSound.setAttribute("src", "assets/sounds/mine.ogg");
     var hurtSound = document.createElement("audio");
         hurtSound.setAttribute("src", "assets/sounds/hurt.ogg");
+    var gameOver = false;
 
     $("#match-this").html(matchThis);
     $("#current-score").html(currentScore);
@@ -58,29 +59,55 @@ console.log("I'm linked!");
             currentScore += diamondValue;
             $("#current-score").html(currentScore);
             mineSound.play();
+            checkWin();
         });
 
         $("#emerald-ore").on("click", function() {
             currentScore += emeraldValue;
             $("#current-score").html(currentScore); 
             mineSound.play();
+            checkWin();
         });
 
         $("#gold-ore").on("click", function() {
             currentScore += goldValue;
             $("#current-score").html(currentScore);
             mineSound.play();
+            checkWin();
         });
 
         $("#redstone-ore").on("click", function() {
             currentScore += redstoneValue;
             $("#current-score").html(currentScore);
             mineSound.play();
+            checkWin();
         });
 
         $("#wither").on("click", function() {
             hurtSound.play();
         })
+
+    }
+
+    function checkWin() {
+
+        if (currentScore === matchThis) {
+            wins++;
+            $("#times-won").html(wins);
+            createValues();
+            currentScore = currentScore - currentScore;
+            $("current-score").html(currentScore);
+            gameOver = true;
+        }
+
+        else if (currentScore > matchThis) {
+            loses++;
+            $("#times-lost").html(loses);
+            createValues();
+            currentScore = currentScore - currentScore;
+            $("#current-score").html(currentScore);
+            gameOver = true;
+        }
 
     }
 
