@@ -16,4 +16,12 @@ console.log("I'm linked!");
     $("#times-won").html(wins);
     $("#times-lost").html(loses);
 
+    function createValues() {
+        matchThis = Math.floor(Math.random() * 101) + 19;
+        $("#match-this").html(matchThis);
+        console.log("I should be running.")
+    }
+
+    createValues()
+
 }
