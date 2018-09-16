@@ -12,6 +12,8 @@ console.log("I'm linked!");
     var loses = 0;
     var mineSound = document.createElement("audio");
         mineSound.setAttribute("src", "assets/sounds/mine.ogg");
+    var hurtSound = document.createElement("audio");
+        hurtSound.setAttribute("src", "assets/sounds/hurt.ogg");
 
     $("#match-this").html(matchThis);
     $("#current-score").html(currentScore);
@@ -75,6 +77,10 @@ console.log("I'm linked!");
             $("#current-score").html(currentScore);
             mineSound.play();
         });
+
+        $("#wither").on("click", function() {
+            hurtSound.play();
+        })
 
     }
 

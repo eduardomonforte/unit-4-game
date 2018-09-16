@@ -54,3 +54,7 @@ body {
 .extra-padding {
     padding-top: 200px;
 }
+
+.score {
+    font-size: 25px;
+}
