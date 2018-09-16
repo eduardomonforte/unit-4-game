@@ -4,17 +4,9 @@ body {
     font-weight: bold;
 }
 
-h1 {
-    text-align: center;
-    padding-top: 160px;
-    color: aqua;
-    font-size: 80px;
-}
-
 .gem {
     position: absolute;
     top: 80px;
-
 }
 
 #diamond-ore {
@@ -45,4 +37,12 @@ h1 {
     position: fixed;
     width: 100%;
     z-index: 99;
+}
+
+#title {
+    font-size: 40px;
+}
+
+.extra-padding {
+    padding-top: 200px;
 }
