@@ -17,8 +17,21 @@ console.log("I'm linked!");
     $("#times-lost").html(loses);
 
     function createValues() {
+        
+        currentScore = 0;
+        $("#current-score").html(currentScore);
+
         matchThis = Math.floor(Math.random() * 101) + 19;
         $("#match-this").html(matchThis);
+
+        diamondValue = Math.floor(Math.random() * 11) + 1;
+
+        emeraldValue = Math.floor(Math.random() * 11) + 1;
+
+        goldValue = Math.floor(Math.random() * 11) + 1;
+
+        redstoneValue = Math.floor(Math.random() * 11) + 1;
+
         console.log("I should be running.")
     }
 
