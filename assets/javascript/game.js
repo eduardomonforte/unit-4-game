@@ -32,7 +32,24 @@ console.log("I'm linked!");
 
         redstoneValue = Math.floor(Math.random() * 11) + 1;
 
+        checkValues();
+
         console.log("I should be running.")
+    }
+
+    // This functions makes sure that each gem has a different value.
+    // Thanks to Charlie Acevedo for his help on this one!
+    function checkValues() {
+        if(diamondValue!==emeraldValue&&diamondValue!==goldValue&&diamondValue!==redstoneValue&&emeraldValue!==goldValue&&emeraldValue!==redstoneValue&&goldValue!==redstoneValue) {
+            clickCrystals();
+        }
+        else {
+            createValues();
+        }
+    }
+
+    function createValues() {
+        
     }
 
     createValues()
