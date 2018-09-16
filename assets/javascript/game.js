@@ -14,6 +14,10 @@ console.log("I'm linked!");
         mineSound.setAttribute("src", "assets/sounds/mine.ogg");
     var hurtSound = document.createElement("audio");
         hurtSound.setAttribute("src", "assets/sounds/hurt.ogg");
+    var levelupSound = document.createElement("audio");
+        levelupSound.setAttribute("src", "assets/sounds/levelup.ogg");
+    var explodeSound = document.createElement("audio");
+        explodeSound.setAttribute("src", "assets/sounds/explode.ogg");
     var gameOver = false;
 
     $("#match-this").html(matchThis);
@@ -23,6 +27,8 @@ console.log("I'm linked!");
 
     function createValues() {
         
+        gameOver = false;
+
         currentScore = 0;
         $("#current-score").html(currentScore);
 
@@ -56,28 +62,28 @@ console.log("I'm linked!");
     function clickCrystals() {
 
         $("#diamond-ore").on("click", function() {
-            currentScore += diamondValue;
+            currentScore = currentScore + diamondValue;
             $("#current-score").html(currentScore);
             mineSound.play();
             checkWin();
         });
 
         $("#emerald-ore").on("click", function() {
-            currentScore += emeraldValue;
+            currentScore = currentScore + emeraldValue;
             $("#current-score").html(currentScore); 
             mineSound.play();
             checkWin();
         });
 
         $("#gold-ore").on("click", function() {
-            currentScore += goldValue;
+            currentScore = currentScore + goldValue;
             $("#current-score").html(currentScore);
             mineSound.play();
             checkWin();
         });
 
         $("#redstone-ore").on("click", function() {
-            currentScore += redstoneValue;
+            currentScore = currentScore + redstoneValue;
             $("#current-score").html(currentScore);
             mineSound.play();
             checkWin();
@@ -93,22 +99,33 @@ console.log("I'm linked!");
 
         if (currentScore === matchThis) {
             wins++;
-            $("#times-won").html(wins);
-            createValues();
-            currentScore = currentScore - currentScore;
-            $("current-score").html(currentScore);
             gameOver = true;
+            levelupSound.play();
+            $("#times-won").html(wins);
+            restartGame();
         }
 
         else if (currentScore > matchThis) {
             loses++;
-            $("#times-lost").html(loses);
-            createValues();
-            currentScore = currentScore - currentScore;
-            $("#current-score").html(currentScore);
             gameOver = true;
+            explodeSound.play();
+            $("#times-lost").html(loses);
+            restartGame();
         }
 
+    }
+
+    function restartGame(){
+
+        if (gameOver = true) {
+            if (currentScore != 0 && currentScore >= matchThis) {
+                createValues();
+            }
+        }
+
+        else {
+            console.log("Nothing is done.")
+        }
     }
 
     createValues()

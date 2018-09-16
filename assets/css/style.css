@@ -4,13 +4,17 @@ body {
     font-weight: bold;
 }
 
+body:hover {
+    cursor: url(../images/pickaxe.png), auto;
+}
+
 .gem {
     position: absolute;
     top: 80px;
 }
 
 .gem:hover {
-    cursor: url(../images/pickaxe.png), auto;
+    cursor: url(../images/pickaxe2.png), auto;
 }
 
 #wither:hover {
