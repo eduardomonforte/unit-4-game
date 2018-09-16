@@ -48,8 +48,8 @@ console.log("I'm linked!");
         }
     }
 
-    function createValues() {
-        
+    function clickCrystals() {
+
     }
 
     createValues()
