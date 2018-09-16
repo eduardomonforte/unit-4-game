@@ -9,6 +9,10 @@ body {
     top: 80px;
 }
 
+.gem:hover {
+    cursor: url(../images/pickaxe.png), help;
+}
+
 #diamond-ore {
     left: 160px;
 }
