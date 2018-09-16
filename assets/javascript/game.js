@@ -18,7 +18,10 @@ console.log("I'm linked!");
         levelupSound.setAttribute("src", "assets/sounds/levelup.ogg");
     var explodeSound = document.createElement("audio");
         explodeSound.setAttribute("src", "assets/sounds/explode.ogg");
+    // These two variables make sure that the game works properly after the first round.
+    // Thanks to Charlie Acevedo for his help implementing these two variables in the code!
     var gameOver = false;
+    var roundWin = false;
 
     $("#match-this").html(matchThis);
     $("#current-score").html(currentScore);
@@ -27,7 +30,7 @@ console.log("I'm linked!");
 
     function createValues() {
         
-        gameOver = false;
+        roundWin = false;
 
         currentScore = 0;
         $("#current-score").html(currentScore);
@@ -52,46 +55,58 @@ console.log("I'm linked!");
     // Thanks to Charlie Acevedo for his help on this one!
     function checkValues() {
         if(diamondValue !== emeraldValue && diamondValue !== goldValue && diamondValue !== redstoneValue && emeraldValue !== goldValue && emeraldValue !== redstoneValue && goldValue !== redstoneValue) {
-            clickCrystals();
+            clickObjects();
         }
         else {
             createValues();
         }
     }
 
-    function clickCrystals() {
+    function clickObjects() {
+
+        if(!gameOver) {
 
         $("#diamond-ore").on("click", function() {
-            currentScore = currentScore + diamondValue;
-            $("#current-score").html(currentScore);
             mineSound.play();
+            if (!roundWin) {
+            currentScore += diamondValue;
+            $("#current-score").html(currentScore);
             checkWin();
+            }
         });
 
         $("#emerald-ore").on("click", function() {
-            currentScore = currentScore + emeraldValue;
-            $("#current-score").html(currentScore); 
             mineSound.play();
+            if (!roundWin) {
+            currentScore += emeraldValue;
+            $("#current-score").html(currentScore);
             checkWin();
+            }
         });
 
         $("#gold-ore").on("click", function() {
-            currentScore = currentScore + goldValue;
-            $("#current-score").html(currentScore);
             mineSound.play();
+            if (!roundWin) {
+            currentScore += goldValue;
+            $("#current-score").html(currentScore);
             checkWin();
+            }
         });
 
         $("#redstone-ore").on("click", function() {
-            currentScore = currentScore + redstoneValue;
-            $("#current-score").html(currentScore);
             mineSound.play();
+            if (!roundWin) {
+            currentScore += redstoneValue;
+            $("#current-score").html(currentScore);
             checkWin();
+            }
         });
 
         $("#wither").on("click", function() {
             hurtSound.play();
         })
+
+        }
 
     }
 
@@ -100,32 +115,21 @@ console.log("I'm linked!");
         if (currentScore === matchThis) {
             wins++;
             gameOver = true;
+            roundWin = true;
             levelupSound.play();
             $("#times-won").html(wins);
-            restartGame();
+            createValues();
         }
 
         else if (currentScore > matchThis) {
             loses++;
             gameOver = true;
+            roundWin = true;
             explodeSound.play();
             $("#times-lost").html(loses);
-            restartGame();
+            createValues();
         }
 
-    }
-
-    function restartGame(){
-
-        if (gameOver = true) {
-            if (currentScore != 0 && currentScore >= matchThis) {
-                createValues();
-            }
-        }
-
-        else {
-            console.log("Nothing is done.")
-        }
     }
 
     createValues()
